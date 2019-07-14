@@ -1,0 +1,63 @@
+{
+  "variables": {
+    "ansible_host": "",
+    "ansible_connection": "docker",
+    "base_image": "",
+    "build_date": "",
+    "docker_username": "",
+    "image_name": "",
+    "name": "var",
+    "package_name": "",
+    "package_version": ""
+  },
+  "builders": [
+    {
+      "type": "docker",
+      "image": "{{user `base_image`}}",
+      "commit": "true",
+      "exec_user": "root",
+      "run_command": [
+        "-d",
+        "-i",
+        "-t",
+        "--name",
+        "{{user `ansible_host`}}",
+        "{{.Image}}",
+        "/bin/bash"
+      ],
+      "changes": [
+        "USER root",
+        "WORKDIR /root",
+        "ENTRYPOINT [\"/bin/bash\", \"-c\"]",
+        "CMD [\"bash\"]"
+      ]
+    }
+  ],
+  "provisioners": [
+    {
+      "type": "shell",
+      "scripts": [
+        "./../scripts/install_basics.sh"
+      ]
+    }
+  ],
+  "post-processors": [
+    [
+      {
+        "type": "docker-tag",
+        "repository": "{{ user `username` }}/{{user `package_name`}}",
+        "tag": "{{user `package_version`}}-{{user `image_name`}}-{{user `build_date`}}"
+      },
+      {
+        "type": "docker-tag",
+        "repository": "{{ user `username` }}/{{user `package_name`}}",
+        "tag": "{{user `package_version`}}-{{user `image_name`}}"
+      },
+      {
+        "type": "manifest",
+        "output": "manifest.json",
+        "strip_path": true
+      }
+    ]
+  ]
+}
