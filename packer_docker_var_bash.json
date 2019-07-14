@@ -45,12 +45,12 @@
     [
       {
         "type": "docker-tag",
-        "repository": "{{ user `username` }}/{{user `package_name`}}",
+        "repository": "{{ user `docker_username` }}/{{user `package_name`}}",
         "tag": "{{user `package_version`}}-{{user `image_name`}}-{{user `build_date`}}"
       },
       {
         "type": "docker-tag",
-        "repository": "{{ user `username` }}/{{user `package_name`}}",
+        "repository": "{{ user `docker_username` }}/{{user `package_name`}}",
         "tag": "{{user `package_version`}}-{{user `image_name`}}"
       },
       {
