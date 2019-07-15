@@ -57,7 +57,7 @@
       "type": "shell",
       "execute_command": "bash -l '{{.Path}}'",
       "scripts": [
-        "scripts/install_post.sh"
+        "./../scripts/install_post.sh"
       ]
     }
   ],
