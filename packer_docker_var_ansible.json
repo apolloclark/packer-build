@@ -52,13 +52,6 @@
         "--extra-vars",
         "ansible_host={{user `ansible_host`}} ansible_connection={{user `ansible_connection`}}"
       ]
-    },
-    {
-      "type": "shell",
-      "execute_command": "bash -l '{{.Path}}'",
-      "scripts": [
-        "./../scripts/install_post.sh"
-      ]
     }
   ],
   "post-processors": [
