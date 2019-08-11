@@ -38,7 +38,7 @@
     },
     {
       "type": "file",
-      "source": "./files/docker-entrypoint.sh",
+      "source": "./../files/docker-entrypoint.sh",
       "destination": "/usr/local/bin/docker-entrypoint"
     }
   ],
