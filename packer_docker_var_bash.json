@@ -5,6 +5,7 @@
     "base_image": "",
     "build_date": "",
     "docker_username": "",
+    "docker_changes": "",
     "image_name": "",
     "name": "var",
     "package_name": "",
@@ -25,12 +26,7 @@
         "{{.Image}}",
         "/bin/bash"
       ],
-      "changes": [
-        "USER root",
-        "WORKDIR /root",
-        "ENTRYPOINT [\"/bin/bash\", \"-c\"]",
-        "CMD [\"bash\"]"
-      ]
+      "changes": "{{user `docker_changes`}}"
     }
   ],
   "provisioners": [
@@ -39,6 +35,11 @@
       "scripts": [
         "./../scripts/install_basics.sh"
       ]
+    },
+    {
+      "type": "file",
+      "source": "./files/docker-entrypoint.sh",
+      "destination": "/usr/local/bin/docker-entrypoint"
     }
   ],
   "post-processors": [
