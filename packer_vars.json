@@ -1,8 +1,3 @@
 {
-    "docker_changes": [
-        "USER root",
-        "WORKDIR /root",
-        "ENTRYPOINT [\"/bin/bash\", \"-l\", \"-c\"]",
-        "CMD [\"bash\"]"
-    ]
+    "docker_changes": "USER root,WORKDIR /root,CMD [\"bash\"]"
 }
