@@ -5,6 +5,7 @@
     "base_image": "",
     "build_date": "",
     "docker_username": "",
+    "docker_capadd": "",
     "docker_changes": "",
     "image_name": "",
     "name": "var",
@@ -18,6 +19,7 @@
       "commit": "true",
       "exec_user": "root",
       "run_command": [
+        "{{user `docker_capadd`}}",
         "-d",
         "-i",
         "-t",
