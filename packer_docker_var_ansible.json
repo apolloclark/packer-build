@@ -55,6 +55,12 @@
       "type": "file",
       "source": "./../files/docker-entrypoint.sh",
       "destination": "/usr/local/bin/docker-entrypoint"
+    },
+    {
+      "type": "shell",
+      "scripts": [
+        "./../scripts/install_post.sh"
+      ]
     }
   ],
   "post-processors": [
